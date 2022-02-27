@@ -20,7 +20,7 @@ void addatgiv(int data)
     struct node *current,*temp;
     temp=(struct node*)(malloc(sizeof(struct node)));
     current=start;
-    while(current->link->info<data)
+    while(current->link!=NULL&&current->link->info<data)
     {
         current=current->link;
     }
@@ -35,7 +35,7 @@ void display()
     current=start;
     while(current!=NULL)
     {
-        printf("%d ",current->info);
+        printf("%lld ",current->info);
         current=current->link;
     }
     printf("\n");
@@ -92,8 +92,9 @@ void check()
 int main()
 {
    int n,x;
-   printf("Enter number of elements\n");
+   printf("Enter number of Elements\n");
    scanf("%d",&n);
+   printf("Enter Elements\n");
    for(int i=0;i<n;i++)
    {
        scanf("%d",&x);
@@ -104,10 +105,11 @@ int main()
        else if(start->info<x)
        addatgiv(x);
    }
+   printf("Sorted Linked List\n");
    display(); 
    
    check();
-
+   printf("List after Removal of Duplicate Elements\n");
    display();
    return 0;
 }
